@@ -6,17 +6,17 @@
 int increment_val = 0;
 
 void increment(void);
+void twice(void);
 void triple(void);
-void spawn_threads(void);
 
 int main(void)
 {
     puts("Starting thread \"increment\"...");
     start_thread(increment);
+    puts("Starting thread \"twice\"...");
+    start_thread(twice);
     puts("Starting thread \"triple\"...");
     start_thread(triple);
-    puts("Starting thread \"spawn_threads\"...");
-    start_thread(spawn_threads);
     puts("Running threads...");
     run();
     return 0;
@@ -24,31 +24,36 @@ int main(void)
 
 void increment(void)
 {
+    int val = 0;
     while (1) {
-        increment_val++;
-        printf("Thread(%d): %d\n", current_thread->thread_id, increment_val);
+        val += 1;
+        printf("Thread(%d): %d : %d  (increment)\n", current_thread->thread_id, increment_val, val);
+		increment_val++;
         usleep(1 * 1000000);
+        yield();
+    }
+}
+
+void twice(void)
+{
+    int val = 0;
+    while (1) {
+        val += 2;
+        printf("Thread(%d): %d : %d  (twice)\n", current_thread->thread_id, increment_val, val);
+        increment_val++;
+		usleep(1 * 1000000);
         yield();
     }
 }
 
 void triple(void)
 {
-    int val = 1;
+    int val = 0;
     while (1) {
-        val *= 3;
-        printf("Thread(%d): %d\n", current_thread->thread_id, val);
-        usleep(1 * 1000000);
-        yield();
-    }
-}
-
-void spawn_threads(void)
-{
-    while (1) {
-        start_thread(increment);
-        printf("Thread(%d): Spawning new \"increment\" thread...\n", current_thread->thread_id);
-        usleep(1 * 1000000);
+        val += 3;
+        printf("Thread(%d): %d : %d  (triple)\n", current_thread->thread_id, increment_val, val);
+        increment_val++;
+		usleep(1 * 1000000);
         yield();
     }
 }

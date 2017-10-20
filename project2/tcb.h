@@ -5,9 +5,11 @@
 #include <string.h>
 #include <ucontext.h>
 
-typedef struct tcb {
-    ucontext_t context;
+typedef struct tcb_t {
     int thread_id;
+	ucontext_t context;
+    struct tcb_t *prev;
+    struct tcb_t *next;
 } tcb_t;
 
 void init_tcb (tcb_t *tcb, void (*function)(void), void *stack, int stack_size)

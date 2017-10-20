@@ -5,38 +5,32 @@
 #include <stdlib.h>
 #include "tcb.h"
 
-struct q_element {
-    tcb_t *tcb;
-    struct q_element *prev;
-    struct q_element *next;
-};
-
-struct q_element * new_item(void)
+struct tcb_t * new_item(void)
 {
-    struct q_element *item = calloc(1, sizeof(struct q_element));
+    struct tcb_t *item = calloc(1, sizeof(struct tcb_t));
     return item;
 }
 
-struct q_element * new_queue(void)
+struct tcb_t * new_queue(void)
 {
-    struct q_element *head = calloc(1, sizeof(struct q_element));
+    struct tcb_t *head = calloc(1, sizeof(struct tcb_t));
     head->prev = head;
     head->next = head;
     return head;
 }
 
-void add_queue(struct q_element *head, struct q_element *element)
+void add_queue(struct tcb_t *head, struct tcb_t *element)
 {
-    struct q_element *last = head->prev;
+    struct tcb_t *last = head->prev;
     last->next = element;
     element->next = head;
     element->prev = last;
     head->prev = element;
 }
 
-struct q_element * del_queue(struct q_element *head)
+struct tcb_t * del_queue(struct tcb_t *head)
 {
-    struct q_element *result = NULL;
+    struct tcb_t *result = NULL;
     if (head != head->next) {
         result = head->next;
         head->next = head->next->next;
