@@ -1,0 +1,8 @@
+F1          Groups:
+F1          
+F1          Please do the project in groups of 2.
+F1          
+F1          Overview:
+F1          
+F1          For this project you are to write build clients and one server that does file transfers. The clients can only upload files, and the server accepts file-name and file data from clients and writes them to files.
+F1          

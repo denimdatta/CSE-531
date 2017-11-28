@@ -1,0 +1,83 @@
+F5          Groups:
+F5          
+F5          Please do the project in groups of 2.
+F5          
+F5          Overview:
+F5          
+F5          For this project you are to write build clients and one server that does file transfers. The clients can only upload files, and the server accepts file-name and file data from clients and writes them to files.
+F5          
+F5          All ports are static. The client sends a message to the server port with a “filename” (string) and the file server changes that string to “filename.server”. The client then sends the file data to the server and the server writes the data to the file “filename.server”. (Note: The client may have to tell server file transfer is over).
+F5          
+F5          Details:
+F5          
+F5          1.      File server can do file receives simultaneously from multiple clients. Make the max number of concurrent transfers 3. If a fourth client tries, it should be told “do not do that”.
+F5          
+F5          2.      Maximum file size is 1MB (approx), server enforces this.
+F5          
+F5          3.      Maximum file length used by client – 15 chars, server enforces this (filename)
+F5          
+F5          4.      Clients and servers do not share memory or file systems.
+F5          
+F5          5.      Each client sends one file and then stops (see details below)
+F5          
+F5          Assumptions and Tips:
+F5          
+F5          1.      Do not assume server and client have access to each other’s files. Assume they are on different machines and do not share file systems.
+F5          
+F5          2.      Do not change the message system (types, sizes, ports and so on). You may fix bugs and such.
+F5          
+F5          3.      You can use a single threaded server, it is easier. If you do that, think about how to do a multi-threaded server.
+F5          
+F5          Implementation strategies:
+F5          
+F5          1.      Design the project first; do not start writing code without knowing how you will handle messages, filenames, dialogs between client and server, and all that.
+F5          
+F5          2.      Make simplifying assumptions and start with simple implementations and then add features.
+F5          
+F5          3.      Test every step.
+F5          
+F5          4.      Note: This project is not simple and has many possibilities of programming issues/bugs. Please get started ASAP.
+F5          
+F5          TEST PROGRAM REQUIREMENTS
+F5          
+F5          [updated]
+F5          
+F5          The program that you submit will be structured as follows:
+F5          
+F5          1.      It is run from the command line, such as
+F5          %  ./a.out 5 f1 f2 f3 f4 f5
+F5          where 5 is the number of clients and f1…f5 are the files to transfer. You can assume the command line will be correct and you do not have to check for its structure (not checking is a security risk, but for this project it is ok).
+F5          
+F5          2.      If the number of clients is higher than 3 then if the transfer of any of the 3 files have not been completed then the 4th (or 5th) one will be rejected.
+F5          
+F5          3.      Each client transfers one file (once).
+F5          
+F5          4.      After a client finishes sending a file over the server it executes “while (1) sleep() //wrong, see discussion board;” – because the termination of threads have not been implemented.
+F5          
+F5          Simpler version: (50% of points)
+F5          
+F5          You can do this version, just one client, and one file transferred (same as doing ./a.out 1 f1)
+F5          
+F5          SUBMIT:
+F5          
+F5          Your project must consist of 6 files:
+F5          
+F5          1.      TCB.h  (uses ucontext.h)
+F5          
+F5          2.      q.h   (includes TCB.h)
+F5          
+F5          3.      threads.h  (includes q.h)
+F5          
+F5          4.      sem.h (includes threads.h)
+F5          
+F5          5.      msgs.h (includes sem.h)
+F5          
+F5          6.      file_test.c – your test program (includes msgs.h).
+F5          
+F5          (make sure the compile command, “gcc file_test.c” does the correct compilation).
+F5          
+F5          All 6 files are to be ZIPPED into one zip or gzip file. The name of this file should reflect the name(s) of the people submitting (abbreviated, do not make it too long).
+F5          
+F5          Subject MUST be “project 5”
+F5          
+F5          Email the zip file to CSE531<dot>proj at gmail.

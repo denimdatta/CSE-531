@@ -1,0 +1,27 @@
+F4          Simpler version: (50% of points)
+F4          
+F4          You can do this version, just one client, and one file transferred (same as doing ./a.out 1 f1)
+F4          
+F4          SUBMIT:
+F4          
+F4          Your project must consist of 6 files:
+F4          
+F4          1.      TCB.h  (uses ucontext.h)
+F4          
+F4          2.      q.h   (includes TCB.h)
+F4          
+F4          3.      threads.h  (includes q.h)
+F4          
+F4          4.      sem.h (includes threads.h)
+F4          
+F4          5.      msgs.h (includes sem.h)
+F4          
+F4          6.      file_test.c – your test program (includes msgs.h).
+F4          
+F4          (make sure the compile command, “gcc file_test.c” does the correct compilation).
+F4          
+F4          All 6 files are to be ZIPPED into one zip or gzip file. The name of this file should reflect the name(s) of the people submitting (abbreviated, do not make it too long).
+F4          
+F4          Subject MUST be “project 5”
+F4          
+F4          Email the zip file to CSE531<dot>proj at gmail.

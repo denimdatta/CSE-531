@@ -1,0 +1,13 @@
+F2          All ports are static. The client sends a message to the server port with a “filename” (string) and the file server changes that string to “filename.server”. The client then sends the file data to the server and the server writes the data to the file “filename.server”. (Note: The client may have to tell server file transfer is over).
+F2          
+F2          Details:
+F2          
+F2          1.      File server can do file receives simultaneously from multiple clients. Make the max number of concurrent transfers 3. If a fourth client tries, it should be told “do not do that”.
+F2          
+F2          2.      Maximum file size is 1MB (approx), server enforces this.
+F2          
+F2          3.      Maximum file length used by client – 15 chars, server enforces this (filename)
+F2          
+F2          4.      Clients and servers do not share memory or file systems.
+F2          
+F2          5.      Each client sends one file and then stops (see details below)
